@@ -104,3 +104,6 @@ RUN echo -e "\n[mysqld]\nsocket = /var/run/mysqld/mysqld.sock\npid-file = /var/r
 ENTRYPOINT [ "bash", "/tmp/script.sh" ]
 
 #CMD [ "/usr/bin/mysqld_safe" ]
+
+docker exec -it mariadb cat /etc/mysql/mariadb.conf.d/50-server.cnf
+
