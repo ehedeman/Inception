@@ -69,3 +69,6 @@ RUN echo "[mysqld]" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo "pid-file = /var/run/mysqld/mysqld.pid" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo "bind-address = 0.0.0.0" >> /etc/mysql/mariadb.conf.d/50-server.cnf
+
+Starting MariaDB database server: mysqld . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . failed!
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)

@@ -3,7 +3,7 @@ mkdir -p /var/run/mysqld
 chown -R mysql:mysql /var/run/mysqld
 
 service mysql start
-sleep 5
+#sleep 5
 
 echo "CREATE DATABASE IF NOT EXISTS $db_name ;" > db1.sql
 echo "CREATE USER IF NOT EXISTS '$db_user'@'%' IDENTIFIED BY '$db_pwd' ;" >> db1.sql

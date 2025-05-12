@@ -8,7 +8,11 @@ COPY ./tools/script.sh /tmp/script.sh
 RUN chmod +x /tmp/script.sh
 
 
-RUN echo -e "\n[mysqld]\nsocket = /var/run/mysqld/mysqld.sock\npid-file = /var/run/mysqld/mysqld.pid\nbind-adress = 0.0.0.0\n" >> /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN echo "[mysqld]" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    echo "pid-file = /var/run/mysqld/mysqld.pid" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    echo "bind-address = 0.0.0.0" >> /etc/mysql/mariadb.conf.d/50-server.cnf
+
 ENTRYPOINT [ "bash", "/tmp/script.sh" ]
 
 #CMD [ "/usr/bin/mysqld_safe" ]
