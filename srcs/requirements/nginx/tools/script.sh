@@ -30,3 +30,7 @@ echo '
 
 
 nginx -g "daemon off;"
+
+echo "127.0.0.1 ehedeman.42.fr" >> /etc/hosts
+
+apt install curl
