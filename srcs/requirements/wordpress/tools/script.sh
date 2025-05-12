@@ -20,7 +20,8 @@ sed -i -r "s/database/$db_name/1"   wp-config.php
 sed -i -r "s/database_user/$db_user/1"  wp-config.php
 sed -i -r "s/passwod/$db_pwd/1"    wp-config.php
 
-sed -i -r "s/localhost/mariadb/1"    wp-config.php  (to connect with mariadb database)
+sed -i -r "s/localhost/mariadb/1"    wp-config.php 
+# (to connect with mariadb database)
 
 
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root

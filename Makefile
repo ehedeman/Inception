@@ -27,4 +27,7 @@ start:
 status:
 	docker ps
 
+build:
+	docker-compose -f ./srcs/docker_compose.yaml up --build -d
+	docker-compose -f ./srcs/docker_compose.yaml start
 .PHONY: all up down stop start status
