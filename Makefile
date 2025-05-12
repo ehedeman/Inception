@@ -13,16 +13,16 @@
 all: up
 
 up:
-	docker-compose -f ./srcs/docler-compose.yml up -d
+	docker-compose -f ./srcs/docker_compose.yaml up -d
 
 down :
-	docker-compose -f ./srcs/docker-compose.yml down
+	docker-compose -f ./srcs/docker_compose.yaml down
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yml stop
+	docker-compose -f ./srcs/docker_compose.yaml stop
 
 start:
-	docker-compose -f ./srcs/docker-compose.yml start
+	docker-compose -f ./srcs/docker_compose.yaml start
 
 status:
 	docker ps

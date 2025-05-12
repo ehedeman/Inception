@@ -9,6 +9,6 @@ RUN apt-get -y update;  \
 COPY ./tools/script.sh /
 COPY ./tools/wp-config.php /
 
-RUN chmod +x script.shit
+RUN chmod +x script.sh
 
 ENTRYPOINT [ "bash", "script.sh" ]
