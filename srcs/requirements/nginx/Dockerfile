@@ -8,5 +8,5 @@ RUN apt update -y; \
 COPY ./tools/script.sh /tmp/script.sh
 
 RUN chmod +x /tmp/script.sh
-
+RUN chmod 664 /etc/ssl/certs/nginx-selfsigned.crt
 ENTRYPOINT ["/tmp/script.sh"]
