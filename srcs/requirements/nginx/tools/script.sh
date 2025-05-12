@@ -28,9 +28,8 @@ echo '
         }
 } ' >>  /etc/nginx/sites-available/default
 
-
-nginx -g "daemon off;"
+apt install curl
 
 echo "127.0.0.1 ehedeman.42.fr" >> /etc/hosts
 
-apt install curl
+nginx -g "daemon off;"
