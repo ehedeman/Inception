@@ -7,6 +7,7 @@ COPY ./tools/script.sh /tmp/script.sh
 
 RUN chmod +x /tmp/script.sh
 
+RUN sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 RUN echo "[mysqld]" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
@@ -15,4 +16,4 @@ RUN echo "[mysqld]" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
 
 ENTRYPOINT [ "bash", "/tmp/script.sh" ]
 
-#CMD [ "/usr/bin/mysqld_safe" ]
+CMD [ "mysqld_safe" ]

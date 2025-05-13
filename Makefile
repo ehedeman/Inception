@@ -13,21 +13,21 @@
 all: up
 
 up:
-	docker-compose -f ./srcs/docker_compose.yaml up -d
+	docker-compose -f ./srcs/docker-compose.yaml up -d
 
 down :
-	docker-compose -f ./srcs/docker_compose.yaml down
+	docker-compose -f ./srcs/docker-compose.yaml down
 
 stop:
-	docker-compose -f ./srcs/docker_compose.yaml stop
+	docker-compose -f ./srcs/docker-compose.yaml stop
 
 start:
-	docker-compose -f ./srcs/docker_compose.yaml start
+	docker-compose -f ./srcs/docker-compose.yaml start
 
 status:
 	docker ps
 
 build:
-	docker-compose -f ./srcs/docker_compose.yaml up --build -d
-	docker-compose -f ./srcs/docker_compose.yaml start
+	docker-compose -f ./srcs/docker-compose.yaml up --build -d
+	docker-compose -f ./srcs/docker-compose.yaml start
 .PHONY: all up down stop start status
