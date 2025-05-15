@@ -1,60 +1,32 @@
-version: "3.5"
-#volumes:
- # wordpress:
-   # name: wordpress
-  #  driver: local
- #   driver_opts:
-    #  device: /Users/marlon/Desktop/Inception/srcs/wordpress
-   #   o: bind
-  #    type: none
- # mariadb:
-    #name: mariadb
-   # driver: local
-   # driver_opts:
-     # device: /Users/marlon/Desktop/Inception/srcs/mariadb
-     # o: bind
-     # type: none
-networks:
-  Inception:
-    name: Inception
-
 services:
   nginx:
+    build: requirements/nginx/.
     container_name: nginx
-    build: ./requirements/nginx/.
-    image: nginx:42
+    depends_on:
+     - wordpress
+     - mariadb
     ports:
-     - "443:443"
-    depends_on:
-      - wordpress
+      - "80:80"
     volumes:
-      - /Users/marlon/Desktop/Inception/srcs/wordpress:/var/www/html
+     - ./web:/var/www/html
+    restart: on-failure
     networks:
-      - Inception
-    env_file:
-      - .env
-    restart: always
+     - inception
   wordpress:
-    container_name: wordpress
-    build: ./requirements/wordpress/.
-    image: wordpress:42
+    build: requirements/wordpress/.
+    container_name: wp-php
     depends_on:
-      - mariadb
+     - mariadb
     volumes:
-      - /Users/marlon/Desktop/Inception/srcs/wordpress:/var/www/html
-    env_file:
-      - .env
+     - ./web:/var/www/html
+    restart: on-failure
     networks:
-      - Inception
-    restart: always
+     - inception
   mariadb:
+    build: requirements/mariadb/.
     container_name: mariadb
-    build: ./requirements/mariadb/.
-    image: mariadb:42
-    volumes:
-      - /Users/marlon/Desktop/Inception/srcs/mariadb:/var/lib/mysql
-    env_file:
-      - .env
+    restart: on-failure
     networks:
-      - Inception
-    restart: always
+     - inception
+networks:
+  inception:

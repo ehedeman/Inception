@@ -1,19 +1,14 @@
-FROM debian:buster
+FROM debian:latest
 
-RUN apt-get update -y; \
-    apt-get install mariadb-server -y;
+RUN apt update && apt upgrade && apt install -y mariadb-server
 
-COPY ./tools/script.sh /tmp/script.sh
+# RUN rm -f /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./tools/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./tools/init.sql /etc/mysql/init.sql
+# RUN chmod 777 /etc/mysql/init.sql
+#might already exist
 
-RUN chmod +x /tmp/script.sh
+COPY ./tools/script.sh ./script.sh
+RUN chmod +x ./script.sh
 
-RUN sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
-
-RUN echo "[mysqld]" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
-    echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
-    echo "pid-file = /var/run/mysqld/mysqld.pid" >> /etc/mysql/mariadb.conf.d/50-server.cnf && \
-    echo "bind-address = 0.0.0.0" >> /etc/mysql/mariadb.conf.d/50-server.cnf
-
-ENTRYPOINT [ "bash", "/tmp/script.sh" ]
-
-CMD [ "mysqld_safe" ]
+CMD ["./script.sh"]

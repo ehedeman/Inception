@@ -6,7 +6,7 @@
 #    By: ehedeman <ehedeman@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/12 13:23:52 by ehedeman          #+#    #+#              #
-#    Updated: 2025/05/12 13:25:40 by ehedeman         ###   ########.fr        #
+#    Updated: 2025/05/15 13:27:18 by ehedeman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,5 +29,4 @@ status:
 
 build:
 	docker-compose -f ./srcs/docker-compose.yaml up --build -d
-	docker-compose -f ./srcs/docker-compose.yaml start
 .PHONY: all up down stop start status

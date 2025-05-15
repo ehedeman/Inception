@@ -1,11 +1,13 @@
-FROM debian:buster
+FROM debian:latest
 
-RUN apt update -y && apt upgrade -y && apt install -y nginx openssl curl
+RUN apt update && apt upgrade && apt install -y nginx
+
+COPY ./tools/script.sh .
+RUN chmod +x ./script.sh
+
+RUN rm -f /etc/nginx/sites-available/default
+COPY ./tools/default /etc/nginx/sites-available/default
 
 
-COPY ./tools/script.sh /tmp/script.sh
-
-RUN chmod +x /tmp/script.sh
-
-#RUN chmod 664 /etc/ssl/certs/nginx-selfsigned.crt
-ENTRYPOINT ["/tmp/script.sh"]
+#CMD ["nginx", "-g", "daemon off;"]
+CMD [ "./script.sh" ]
