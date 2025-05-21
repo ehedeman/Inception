@@ -20,10 +20,9 @@ cd /var/www/html
 
 # sed -i -r "s/localhost/mariadb/1"   /var/www/html/wp-config.php
 
-./wp-cli.phar core install --url=127.0.0.1 --title=inception --admin_user=marlon --admin_password=1234 --admin_email=admin@admin.com --skip-email --allow-root
+./wp-cli.phar core install --url=ehedeman.42.fr --title=inception --admin_user=marlon --admin_password=1234 --admin_email=admin@admin.com --skip-email --allow-root
 ./wp-cli.phar user create marlon_ marlon.hedemann@gmx.de --role=author --user_pass=1234 --allow-root
 ./wp-cli.phar theme install astra --activate --allow-root
-
 
 echo test
 

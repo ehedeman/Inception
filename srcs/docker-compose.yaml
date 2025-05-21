@@ -6,9 +6,6 @@ services:
     container_name: nginx
     depends_on:
      - wordpress
-     - mariadb
-    # ports:
-    #   - "80:80"
     ports:
       - "443:443"
     volumes:
@@ -26,8 +23,8 @@ services:
     restart: on-failure
     networks:
      - inception
-    # expose:
-    #  - "9000"
+    expose:
+     - "9000"
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
@@ -40,3 +37,4 @@ services:
     #  - "3306"
 networks:
   inception:
+    name: inception

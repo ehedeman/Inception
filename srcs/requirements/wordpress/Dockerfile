@@ -1,9 +1,15 @@
 FROM debian:latest
 
-RUN apt update && apt upgrade && apt install -y \
-    php-fpm     \
-    php-mysqli  \
-    curl
+# RUN apt update && apt upgrade && apt install -y \
+#     php-fpm     \
+#     php-mysql  \
+#     curl
+
+RUN apt update -y 
+
+RUN apt install php-fpm php-mysql -y
+
+RUN apt install curl -y
 
 COPY ./tools/script.sh ./script.sh
 RUN chmod 777 ./script.sh

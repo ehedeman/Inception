@@ -99,11 +99,10 @@
 
 
 server {
-    listen 443 ssl;
+    listen 443 default_server ssl;
     listen [::]:443 ssl;
 
-    server_name ehedeman.42.fr;
-    server_name www.ehedeman.42.fr;
+    server_name ehedeman.42.fr www.ehedeman.42.fr;
 
     #SSL certificates
     ssl_certificate /etc/ssl/certs/ehedeman.crt;
@@ -115,9 +114,10 @@ server {
     index index.php;
 
     location / {
-        autoindex on;
-        autoindex_format html;
-        try_files $uri $uri/ /index.php?$args;
+        # autoindex on;
+        # autoindex_format html;
+		try_files $uri =404;
+        # try_files $uri $uri/ /index.php?$args;
     }
 
     location ~ .php$ {
@@ -125,9 +125,9 @@ server {
         { 
             return 404;
         }
-        try_files $uri =404;
-        include /etc/nginx/fastcgi_params;
+        # ry_files $uri =404;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass wordpress:9000;
+		include /etc/nginx/fastcgi_params;
+        fastcgi_pass wp-php:9000;
             }
 }
