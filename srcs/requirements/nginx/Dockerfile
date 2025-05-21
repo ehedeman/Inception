@@ -1,6 +1,6 @@
 FROM debian:latest
 
-RUN apt update && apt upgrade && apt install -y nginx
+RUN apt -y update && apt install -y nginx && apt install openssl -y
 
 COPY ./tools/script.sh .
 RUN chmod +x ./script.sh

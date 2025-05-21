@@ -1,3 +1,5 @@
+version: "3.7"
+
 services:
   nginx:
     build: requirements/nginx/.
@@ -5,8 +7,10 @@ services:
     depends_on:
      - wordpress
      - mariadb
+    # ports:
+    #   - "80:80"
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
      - ./web:/var/www/html
     restart: on-failure
@@ -22,11 +26,17 @@ services:
     restart: on-failure
     networks:
      - inception
+    # expose:
+    #  - "9000"
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
+    # volumes:
+    #   - ./database:/var/lib/mysql
     restart: on-failure
     networks:
      - inception
+    # expose:
+    #  - "3306"
 networks:
   inception:
