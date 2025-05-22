@@ -21,7 +21,7 @@ down :
 stop:
 	docker-compose -f ./srcs/docker-compose.yaml stop
 
-start:
+start: build
 	docker-compose -f ./srcs/docker-compose.yaml start
 
 status:

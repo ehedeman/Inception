@@ -1,6 +1,8 @@
 #!bin/bash
 
-export PATH=$PATH:/usr/bin/php-fpm8.2
+sleep 1
+
+export PATH=$PATH:/usr/bin/php-fpm7.3
 
 cd /var/www/html
 
@@ -24,6 +26,8 @@ cd /var/www/html
 ./wp-cli.phar user create marlon_ marlon.hedemann@gmx.de --role=author --user_pass=1234 --allow-root
 ./wp-cli.phar theme install astra --activate --allow-root
 
+mkdir /run/php
+
 echo test
 
-php-fpm8.2 -F
+php-fpm7.3 --nodaemonize

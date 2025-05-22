@@ -1,4 +1,3 @@
-version: "3.7"
 
 services:
   nginx:
@@ -23,8 +22,8 @@ services:
     restart: on-failure
     networks:
      - inception
-    expose:
-     - "9000"
+    # expose:
+    #  - "9000"
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb

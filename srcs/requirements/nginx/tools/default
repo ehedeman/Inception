@@ -83,23 +83,10 @@
 # # You can move that to a different file under sites-available/ and symlink that
 # # to sites-enabled/ to enable it.
 # #
-# #server {
-# #	listen 80;
-# #	listen [::]:80;
-# #
-# #	server_name example.com;
-# #
-# #	root /var/www/example.com;
-# #	index index.html;
-# #
-# #	location / {
-# #		try_files $uri $uri/ =404;
-# #	}
-# #}
 
 
 server {
-    listen 443 default_server ssl;
+    listen 443 ssl;
     listen [::]:443 ssl;
 
     server_name ehedeman.42.fr www.ehedeman.42.fr;
@@ -111,23 +98,21 @@ server {
     ssl_protocols TLSv1.3;
     root /var/www/html;
 
-    index index.php;
+    index index.php index.html;
 
     location / {
         # autoindex on;
         # autoindex_format html;
-		try_files $uri =404;
+		try_files $uri $uri/ =404;
         # try_files $uri $uri/ /index.php?$args;
     }
 
     location ~ .php$ {
-        if (!-f $document_root$fastcgi_script_name)
-        { 
-            return 404;
-        }
-        # ry_files $uri =404;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-		include /etc/nginx/fastcgi_params;
+        include snippets/fastcgi-php.conf;
+        # try_files $uri =404;
+        #fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		#include /etc/nginx/fastcgi_params;
         fastcgi_pass wp-php:9000;
-            }
+        #fastcgi_index index.php;
+    }
 }

@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:buster
 
 RUN apt -y update && apt install -y nginx && apt install openssl -y
 
@@ -8,6 +8,7 @@ RUN chmod +x ./script.sh
 RUN rm -f /etc/nginx/sites-available/default
 COPY ./tools/default /etc/nginx/sites-available/default
 
+EXPOSE 443
 
 #CMD ["nginx", "-g", "daemon off;"]
 CMD [ "./script.sh" ]
