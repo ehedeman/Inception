@@ -17,7 +17,7 @@ cd /var/www/html
 
 # chmod 777 /var/www/html/wp-config.php
 # sed -i -r "s/wordpress_name_here/wordpress/1"   /var/www/html/wp-config.php
-# sed -i -r "s/1username_here/marlon/1"  /var/www/html/wp-config.php
+# sed -i -r "s/username_here/marlon/1"  /var/www/html/wp-config.php
 # sed -i -r "s/password_here/1234/1"    /var/www/html/wp-config.php
 
 # sed -i -r "s/localhost/mariadb/1"   /var/www/html/wp-config.php
