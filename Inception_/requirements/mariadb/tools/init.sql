@@ -1,5 +1,0 @@
-CREATE DATABASE database_name_here;
-USE database_name_here;
-CREATE USER 'marlon'@'%' IDENTIFIED BY '1234';
-GRANT ALL PRIVILEGES ON *.* TO 'marlon'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;

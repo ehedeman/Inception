@@ -2,7 +2,7 @@
 
 sleep 1
 
-export PATH=$PATH:/usr/bin/php-fpm7.3
+export PATH=$PATH:/usr/bin/php-fpm8.2
 
 cd /var/www/html
 
@@ -17,7 +17,7 @@ cd /var/www/html
 
 # chmod 777 /var/www/html/wp-config.php
 # sed -i -r "s/wordpress_name_here/wordpress/1"   /var/www/html/wp-config.php
-# sed -i -r "s/username_here/marlon/1"  /var/www/html/wp-config.php
+# sed -i -r "s/1username_here/marlon/1"  /var/www/html/wp-config.php
 # sed -i -r "s/password_here/1234/1"    /var/www/html/wp-config.php
 
 # sed -i -r "s/localhost/mariadb/1"   /var/www/html/wp-config.php
@@ -26,8 +26,7 @@ cd /var/www/html
 ./wp-cli.phar user create marlon_ marlon.hedemann@gmx.de --role=author --user_pass=1234 --allow-root
 ./wp-cli.phar theme install astra --activate --allow-root
 
-mkdir /run/php
 
 echo test
 
-php-fpm7.3 --nodaemonize
+php-fpm8.2 -F
