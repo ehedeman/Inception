@@ -5,27 +5,33 @@ services:
     ports:
       - "443:443"
     volumes:
-     - ./web:/var/www/html
+     - /home/marlon/Inception_web:/var/www/html
     depends_on:
      - wordpress
     networks:
      - inception
+    env_file:
+     - .env
   wordpress:
     build: requirements/wordpress/.
     container_name: wp-php
     volumes:
-     - ./web:/var/www/html
+     - /home/marlon/Inception_web:/var/www/html
     depends_on:
      - mariadb
     networks:
      - inception
+    env_file:
+     - .env
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
     volumes:
-     - ./database:/var/lib/mysql
+     - /home/marlon/Inception_database:/var/lib/mysql
     networks:
      - inception
+    env_file:
+     - .env
 
 networks:
   inception:

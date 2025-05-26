@@ -17,13 +17,13 @@ mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
 chmod 777 /var/www/html/wp-config.php
 sed -i -r "s/wordpress_name_here/wordpress/1"   /var/www/html/wp-config.php
-sed -i -r "s/username_here/marlon/1"  /var/www/html/wp-config.php
-sed -i -r "s/password_here/1234/1"    /var/www/html/wp-config.php
+sed -i -r "s/username_here/$USER/1"  /var/www/html/wp-config.php
+sed -i -r "s/password_here/$PASSWORD/1"    /var/www/html/wp-config.php
 
 sed -i -r "s/localhost/mariadb/1"   /var/www/html/wp-config.php
 
-./wp-cli.phar core install --url=ehedeman.42.fr --title=inception --admin_user=marlon --admin_password=1234 --admin_email=admin@admin.com --skip-email --allow-root
-./wp-cli.phar user create marlon_ marlon.hedemann@gmx.de --role=author --user_pass=1234 --allow-root
+./wp-cli.phar core install --url=$DOMAIN_NAME --title=inception --admin_user=$USER --admin_password=$PASSWORD --admin_email=admin@admin.com --skip-email --allow-root
+./wp-cli.phar user create $USER_ $USER.hedemann@gmx.de --role=author --user_pass=$PASSWORD --allow-root
 ./wp-cli.phar theme install astra --activate --allow-root
 
 
