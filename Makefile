@@ -32,4 +32,7 @@ status:
 build:
 	cat /home/marlon/Inception_pws/whoops_its_a_password >> srcs/.env
 	docker-compose -f ./srcs/docker-compose.yaml up --build -d
-.PHONY: all up down stop start status
+
+re: down start
+
+.PHONY: all up down stop start status re
