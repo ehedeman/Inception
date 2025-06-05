@@ -14,24 +14,24 @@ all: up
 
 up:
 	cat /home/marlon/Inception/secrets/whats_that_a_password.txt >> srcs/.env
-	docker-compose -f ./srcs/docker-compose.yaml up -d
+	docker-compose -f ./srcs/docker-compose.yml up -d
 
 down :
-	docker-compose -f ./srcs/docker-compose.yaml down
+	docker-compose -f ./srcs/docker-compose.yml down
 	cat /home/marlon/enviroment.txt > srcs/.env
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yaml stop
+	docker-compose -f ./srcs/docker-compose.yml stop
 
 start: build
-	docker-compose -f ./srcs/docker-compose.yaml start
+	docker-compose -f ./srcs/docker-compose.yml start
 
 status:
 	docker ps
 
 build:
 	cat /home/marlon/Inception/secrets/whats_that_a_password.txt >> srcs/.env
-	docker-compose -f ./srcs/docker-compose.yaml up --build -d
+	docker-compose -f ./srcs/docker-compose.yml up --build -d
 
 re: down start
 
